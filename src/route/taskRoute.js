@@ -1,12 +1,11 @@
-const promiseRouter = require("express-promise-router");
-const taskContronller = require("../controllers/taskContronller");
+const express = require('express');
+const router = express.Router();
+const taskController = require('../controllers/taskContronller');
 
-let route = promiseRouter();
+router.post('/', taskController.createTask);
+router.get('/', taskController.getAllTasks);
+router.get('/:id', taskController.getTaskById);
+router.put('/:id', taskController.updateTask);
+router.delete('/:id', taskController.deleteTask);
 
-route.post("/store", taskContronller.store);
-route.get("/", taskContronller.findAll);
-route.get("/:id", taskContronller.find);
-route.put("/:id", taskContronller.update);
-route.delete("/:id", taskContronller.delete);
-
-module.exports = route;
+module.exports = router;

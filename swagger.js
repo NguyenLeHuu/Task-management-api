@@ -9,9 +9,17 @@ const options = {
   
   const swaggerAutogen = require("swagger-autogen")(options);
   const path = require("path");
+const User = require("./src/models/user.js");
+const Task = require("./src/models/task.js");
+
+const m2s = require('mongoose-to-swagger');
+
+const swaggerSchema = {
+  user: m2s(User),
+  task: m2s(Task),
+}
+
   
-  // const outputFile = `${__dirname}/swagger_output.json`;
-  // const endpointsFiles = [`${__dirname}/route/Route.js`];
   const outputFile = `swagger_output.json`;
   const endpointsFiles = [`${__dirname}/src/route/index.js`];
   
@@ -29,13 +37,9 @@ const options = {
         url: `http://localhost:${port}`,
         description: "local server",
       },
-      // {
-      //   // url: `https://ec2-54-169-148-196.ap-southeast-1.compute.amazonaws.com`,
-      //   url: `https://clinicsystem.io.vn/`,
-      //   description: "Server in hosting",
-      // },
     ],
     components: {
+      schemas:swaggerSchema,
       securitySchemes: {
         bearerAuth: {
           type: "http",
