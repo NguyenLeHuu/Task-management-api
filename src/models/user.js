@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Task = require('./task');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
@@ -12,7 +13,13 @@ const userSchema = new Schema({
     type: String,
     required: true
   },
-  tasks: [{ type: Schema.Types.ObjectId, ref: 'Task' }]
+  role:{
+    type: String,
+    enum: ['dev', 'PM'],
+    default: 'dev',
+  },
+  tasks: [{ type: Schema.Types.ObjectId, ref: 'Task'
+  }]
 }, {
   timestamps: true,
   autoIndex: true

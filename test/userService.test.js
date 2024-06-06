@@ -59,14 +59,16 @@ describe('User Service', () => {
   });
 
   test('should update a user', async () => {
-    const username = 'testuser';
-    const password = 'testpassword';
+    const username = 'testUser';
+    const password = 'password123';
     const newUser = await userService.createUser(username, password);
-
-    const updatedUser = await userService.updateUser(newUser._id, { username: 'updateduser' });
-
+  
+    const updatedUsername = 'updatedUser';
+    const updatedPassword = 'updatedPassword123';
+    const updatedUser = await userService.updateUser(newUser._id, updatedUsername, updatedPassword);
+  
     expect(updatedUser).toHaveProperty('_id');
-    expect(updatedUser.username).toBe('updateduser');
+    expect(updatedUser.username).toBe(updatedUsername);
   });
 
   test('should delete a user', async () => {

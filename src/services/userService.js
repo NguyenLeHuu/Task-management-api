@@ -20,15 +20,18 @@ async function getAllUsers() {
 
 async function getUserById(id) {
   try {
-    return await User.findById(parseToObjectID(id));
+    return await User.findById(parseToObjectID(id)).populate('tasks', 'title description status');
   } catch (error) {
     throw new Error(error);
   }
 }
 
-async function updateUser(id, userData) {
+async function updateUser(id, username,password) {
   try {
-    return await User.findByIdAndUpdate(parseToObjectID(id), userData, { new: true });
+    return await User.findByIdAndUpdate(
+      parseToObjectID(id),
+      { username,password },
+     {new: true });
   } catch (error) {
     throw new Error(error);
   }

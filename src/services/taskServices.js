@@ -27,9 +27,13 @@ async function getTaskById(id) {
   }
 }
 
-async function updateTask(id, taskData) {
+async function updateTask(id, status,assignTo) {
   try {
-    return await Task.findByIdAndUpdate(parseToObjectID(id), taskData, { new: true });
+    return await Task.findByIdAndUpdate(
+      parseToObjectID(id),
+    { status, assignTo },
+    { runValidators: true, new: true }
+  );
   } catch (error) {
     throw new Error(error);
   }

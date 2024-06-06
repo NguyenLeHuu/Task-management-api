@@ -28,8 +28,8 @@ const swaggerSchema = {
   const doc = {
     info: {
       version: "1.0.0", // by default: '1.0.0'
-      title: "Nguyen Le Huu K15 FPT", // by default: 'REST API'
-      description: "Task Manager API", // by default: ''
+      title: "Task Manager API - Nguyen Le Huu K15 FPT", // by default: 'REST API'
+      description: "user of system has 2 role : PM (CRUD task, assign task to dev) and dev(default role when create account, CRUD their account, See list tasks)", // by default: ''
     },
     basePath: "/", // by default: '/'
     servers: [

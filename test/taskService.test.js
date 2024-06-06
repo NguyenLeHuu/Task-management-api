@@ -62,17 +62,19 @@ describe('Task Service', () => {
     expect(task.title).toBe(title);
   });
 
-  test('should update a task', async () => {
+  test('should update task status', async () => {
     const title = 'Test Task';
     const description = 'Test Description';
     const status = 'incomplete';
     const newTask = await taskService.createTask(title, description, status);
-
-    const updatedTask = await taskService.updateTask(newTask._id, { title: 'Updated Task' });
-
+  
+    const updatedStatus = 'completed';
+    const updatedTask = await taskService.updateTask(newTask._id,  updatedStatus );
+  
     expect(updatedTask).toHaveProperty('_id');
-    expect(updatedTask.title).toBe('Updated Task');
+    expect(updatedTask.status).toBe(updatedStatus);
   });
+  
 
   test('should delete a task', async () => {
     const title = 'Test Task';
