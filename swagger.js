@@ -29,7 +29,7 @@ const swaggerSchema = {
     info: {
       version: "1.0.0", // by default: '1.0.0'
       title: "Task Manager API - Nguyen Le Huu K15 FPT", // by default: 'REST API'
-      description: "user of system has 2 role : PM (CRUD task, assign task to dev) and dev(default role when create account, CRUD their account, See list tasks)", // by default: ''
+      description: "user of system has 2 role : PM (CRUD task, assign task to dev) and dev(default role when create account, CRUD their account, See list tasks). Using account (username: admin, pw: 1) to test all api", 
     },
     basePath: "/", // by default: '/'
     servers: [

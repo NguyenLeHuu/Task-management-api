@@ -10,7 +10,6 @@ const route = require("./src/route/index.js");
 const swaggerUI = require("swagger-ui-express");
 const swaggerFile = require("./swagger_output.json");
 const rateLimit = require("express-rate-limit");
-const { log } = require("console");
 
 require("dotenv").config();
 
@@ -49,7 +48,6 @@ app.use("/", route);
 app.use("/api-docs", swaggerUI.serve, swaggerUI.setup(swaggerFile));
 
 // Start server
-const server = http.createServer(app);
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}`);
 });

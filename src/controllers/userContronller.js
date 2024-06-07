@@ -3,6 +3,7 @@ const userService = require('../services/userService');
 async function createUser(req, res) {
   /* 
         #swagger.tags = ['user']
+         #swagger.description = "create new user/account (default dev role)"
         */
   const { username, password } = req.body;
   try {
